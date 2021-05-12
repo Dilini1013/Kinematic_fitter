@@ -1680,13 +1680,13 @@ void fcn(int &npar, double *gin, double &f, double *par, int iflag){
     
     double chiSq=0;
     double MXSq=0;
-    static TLorentzVector epTot4vec;
-    TLorentzVector P4X;
+   static TLorentzVector epTot4vec;
+   static TLorentzVector P4X;
     static TLorentzVector elec4vec_fit, prot4vec_fit, pplus4vec_fit, pminus4vec_fit;
-    static TLorentzVector elec4vec_0,prot4vec_0,pplus4vec_0,pminus4vec_0;
-    static TVector3 elec3vec_0, prot3vec_0, pplus3vec_0, pminus3vec_0, yq;
-    static TVector3 elec3vec_fit,prot3vec_fit,pplus3vec_fit,pminus3vec_fit;
-    static int ii;
+   static TLorentzVector elec4vec_0,prot4vec_0,pplus4vec_0,pminus4vec_0;
+  static  TVector3 elec3vec_0, prot3vec_0, pplus3vec_0, pminus3vec_0, yq;
+   static TVector3 elec3vec_fit,prot3vec_fit,pplus3vec_fit,pminus3vec_fit;
+    int ii;
     
     switch (iflag) {
         case 1:
@@ -1715,25 +1715,38 @@ void fcn(int &npar, double *gin, double &f, double *par, int iflag){
     }
     // Electron
     chiSq += pow((elec4vec_fit.P()-elec4vec_0.P())/sigma_p_electron,2);
-    // Theta or cos(Theta)?????
+    printf("chiSq = %8.4f \n",chiSq);
     chiSq += pow((elec4vec_fit.Theta()-elec4vec_0.Theta())/sigma_theta_electron,2);
+    printf("chiSq = %8.4f\n ",chiSq);
     chiSq += pow((elec4vec_fit.Phi()-elec4vec_0.Phi())/sigma_phi_electron,2);
+    printf("chiSq = %8.4f \n",chiSq);
     // Proton
     chiSq += pow((prot4vec_fit.P()-prot4vec_0.P())/sigma_p_proton,2);
+    printf("chiSq = %8.4f \n ",chiSq);
     chiSq += pow((prot4vec_fit.Theta()-prot4vec_0.Theta())/sigma_theta_proton,2);
+    printf("chiSq = %8.4f \n ",chiSq);
     chiSq += pow((prot4vec_fit.Phi()-prot4vec_0.Phi())/sigma_phi_proton,2);
+    printf("chiSq = %8.4f \n ",chiSq);
     // Pi_plus
     chiSq += pow((pplus4vec_fit.P()-pplus4vec_0.P())/sigma_p_piplus,2);
+    printf("chiSq = %8.4f \n ",chiSq);
     chiSq += pow((pplus4vec_fit.Theta()-pplus4vec_0.Theta())/sigma_theta_piplus,2);
+    printf("chiSq = %8.4f \n ",chiSq);
     chiSq += pow((pplus4vec_fit.Phi()-pplus4vec_0.Phi())/sigma_phi_piplus,2);
+    printf("chiSq = %8.4f \n ",chiSq);
     //  Pi_minus
     chiSq += pow((pminus4vec_fit.P()-pminus4vec_0.P())/sigma_p_piminus,2);
+    printf("chiSq = %8.4f \n ",chiSq);
     chiSq += pow((pminus4vec_fit.Theta()-pminus4vec_0.Theta())/sigma_theta_piminus,2);
+    printf("chiSq = %8.4f \n ",chiSq);
     chiSq += pow((pminus4vec_fit.Phi()-pminus4vec_0.Phi())/sigma_phi_piminus,2);
+    printf("chiSq = %8.4f \n ",chiSq);
     //
     P4X = epTot4vec - elec4vec_fit-prot4vec_fit-pplus4vec_fit-pminus4vec_fit;
     chiSq += P4X.M2()*P4X.M2()/(wgt_MX2*wgt_MX2);
+    printf("chiSq = %8.4f \n ",chiSq);
     chiSq += P4X.E()*P4X.E()/(wgt_EX*wgt_EX);
+    printf("chiSq = %8.4f \n ",chiSq);
     //  Calculate PY
     //  This is the shortcut for fixed target
     yq=beam.Vect();
@@ -1741,6 +1754,9 @@ void fcn(int &npar, double *gin, double &f, double *par, int iflag){
     yq.Unit();
     double PY = yq.Dot(P4X.Vect());
     chiSq += PY*PY/(wgt_PY*wgt_PY);
+    printf("chiSq = %8.4f \n",chiSq);
+    f=chiSq;
+    
     /*
      for(int j=0; j<nparMINUIT ;j++){
      printf("par[%d] = %8.6f\n", j,par[j]);
@@ -3374,4 +3390,7 @@ bool z_vertex_cut(region_part_ptr part){
  return fe;
  
  }*/
+
+
+
 
