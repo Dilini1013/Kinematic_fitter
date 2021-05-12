@@ -87,9 +87,9 @@ const double sigma_phi_piplus=0.002213;
 const double sigma_phi_piminus=0.001622;
 const double err_init =0.005;
 Double_t gradient[nparMINUIT], val[nparMINUIT],parval[nparMINUIT];
-const double wgt_MX2 = Mp2;
-const double wgt_EX  = Mp;
-const double wgt_PY  = Mp;
+const double wgt_MX2 = Mp*0.2
+const double wgt_EX    = Mp*0.1
+const double wgt_PY = Mp*0.1
 
 
 
