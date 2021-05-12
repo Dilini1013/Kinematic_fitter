@@ -1680,12 +1680,12 @@ void fcn(int &npar, double *gin, double &f, double *par, int iflag){
     
     double chiSq=0;
     double MXSq=0;
-   static TLorentzVector epTot4vec;
-   static TLorentzVector P4X;
-    static TLorentzVector elec4vec_fit, prot4vec_fit, pplus4vec_fit, pminus4vec_fit;
-   static TLorentzVector elec4vec_0,prot4vec_0,pplus4vec_0,pminus4vec_0;
-  static  TVector3 elec3vec_0, prot3vec_0, pplus3vec_0, pminus3vec_0, yq;
-   static TVector3 elec3vec_fit,prot3vec_fit,pplus3vec_fit,pminus3vec_fit;
+    TLorentzVector epTot4vec;
+    TLorentzVector P4X;
+    TLorentzVector elec4vec_fit, prot4vec_fit, pplus4vec_fit, pminus4vec_fit;
+    TLorentzVector elec4vec_0,prot4vec_0,pplus4vec_0,pminus4vec_0;
+    TVector3 elec3vec_0, prot3vec_0, pplus3vec_0, pminus3vec_0, yq;
+    TVector3 elec3vec_fit,prot3vec_fit,pplus3vec_fit,pminus3vec_fit;
     int ii;
     
     switch (iflag) {
